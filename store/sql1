@@ -1,0 +1,11 @@
+# generate derivative colum
+
+select  case when price>= itemprice then 'O' when price<itemprice 
+then 'X' end flag, b.id,  price
+
+from
+
+(select tb2.id,tb2.price,tb1.itemprice from temporder as tb2
+ inner join inventorylist as tb1
+ on tb2.id = tb1.inv_id) as b;
+ 
